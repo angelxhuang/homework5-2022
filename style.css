@@ -1,0 +1,161 @@
+
+/* animation takes 5 second + sets width to 475px */
+#logo {
+    animation: logo 5s;
+    width: 475px;
+}
+
+/* keyframes that sets starting and ending opacity + starting and ending width */
+@keyframes logo {
+    from {width: 25px;}
+    to {width: 475px;}
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* sets font, background image, and backup background color */
+body {
+    font-family: "Poppins", serif;
+    background-image: url(../images/concrete_seamless.png);
+    background-color: #f1f1f1;
+}
+
+/* edits header tag to use flex */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* edits nav_links class to use flex */
+.nav_links{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* styles links to use same color after they have been visited */
+.nav_links :visited{
+    color: blue;
+}
+
+/* styles header elements that are direct children of a card class */
+div.card > header{ 
+    background-color: #288088;
+    border: solid 2px #45ADAD;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* styles card class */
+.card{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 450px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* styles pricing class */
+.pricing{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* styles images in the gallery class */
+.gallery img{
+    border: 10px solid #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* styles gallery class */
+.gallery{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* styles screen-size that is greater than 900px */
+@media screen and (min-width:900px){
+
+    /* styles header tag to left */
+    header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /* styles nav_links class to right */
+    .nav_links{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    /* styles card class */
+    .card{
+        flex-basis: 275px;
+    }
+    
+    /* modify the first header so that it remains visible at the top of the screen during scrolling */
+    body > header{
+        position: sticky; 
+        top: 0;
+    }
+}
+
+/* logo class will not be animated if prefers-reduced-motion is selected */
+@media (prefers-reduced-motion: reduce){
+    #logo{
+        animation: none;
+    }
+}
+
+/* styles page that is printed in portrait mode */
+@media print{
+
+    /* styles body font + removes background image */
+    body{
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+    
+    /* styles nav_links to make sure elements are spaced out */
+    .nav_links{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    /* styles nav to make sure elements are spaced out */
+    nav{
+        width: 100%;
+    }
+
+    /* styles pricing class so that elements are align along the bottom */
+    .pricing{
+        flex-wrap: nowrap;
+        align-items: end;
+    }
+
+    /* styles card class */
+    .card{
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+
+    /* no part of the gallery will be visible */
+    #gallery{
+        display: none;
+    }
+
+    /* adds thumbs up entity to the second line of the card class */
+    div.card li:nth-child(2):after{
+        content: '\01F44D'
+    }
+}
